@@ -2,6 +2,7 @@ import 'package:chat_app/apis/api.dart';
 import 'package:chat_app/listings/chat_insert.dart';
 import 'package:chat_app/views/chats.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 
 class CreateMessage extends StatefulWidget {
@@ -54,12 +55,11 @@ class _CreateMessageState extends State<CreateMessage> {
                   child: RaisedButton(
                     child: Text(
                       "Send",
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor, fontSize: 21),
+                      style: TextStyle(color: Colors.black, fontSize: 21),
                     ),
                     color: Theme.of(context).primaryColor,
                     onPressed: () async {
-                      {
+                      if (myController.text != "") {
                         final notes = ChatInsert(
                             chatMessage: myController.text,
                             chatTitle: widget.source);
@@ -98,6 +98,15 @@ class _CreateMessageState extends State<CreateMessage> {
                             Navigator.of(context).pop();
                           }
                         });
+                      } else if (myController.text == "") {
+                        Fluttertoast.showToast(
+                            msg: "Message is empty",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 2,
+                            backgroundColor: Colors.grey[800],
+                            textColor: Colors.white,
+                            fontSize: 14.0);
                       }
                     },
                   ),
