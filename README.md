@@ -9,6 +9,7 @@ By Santosh Gudlavalleti
 The app is a basic version of various chat application present these days, but the app includes features like HTTP requests, API calls etc while having an established communication between the App and the Server. 
 The Json data is decoded and the necessary items are displayed using various Packages, Widgets etc like ListViews, SpeedDial etc
 The app can be directly run on both Android and iOS(Thanks to Flutter :))
+
 PS: Do not try to run the code directly, The secret-Key(Password) is not available and hence will pop up errors.
 
 For Folks who are interested in App dev: 
