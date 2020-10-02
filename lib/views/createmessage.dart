@@ -35,7 +35,7 @@ class _CreateMessageState extends State<CreateMessage> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: <Widget>[
-                SizedBox(height: 50.0),
+                SizedBox(height: 30.0),
                 Container(
                   child: Text(
                     "${widget.source}, Tell Something",
@@ -43,73 +43,67 @@ class _CreateMessageState extends State<CreateMessage> {
                         color: Theme.of(context).primaryColor, fontSize: 24),
                   ),
                 ),
-                SizedBox(height: 50.0),
+                SizedBox(height: 30.0),
                 TextField(
                   decoration: InputDecoration(hintText: "Enter the Message"),
                   controller: myController,
                 ),
                 SizedBox(height: 30.0),
-                SizedBox(
-                  width: 100.0,
-                  height: 30.0,
-                  child: RaisedButton(
-                    child: Text(
-                      "Send",
-                      style: TextStyle(color: Colors.black, fontSize: 21),
-                    ),
-                    color: Theme.of(context).primaryColor,
-                    onPressed: () async {
-                      if (myController.text != "") {
-                        final notes = ChatInsert(
-                            chatMessage: myController.text,
-                            chatTitle: widget.source);
-
-                        final result = await chatService.createChat(notes);
-
-                        final title = 'Done';
-                        final text = result.error
-                            ? (result.errorMessage ??
-                                'An error has hfwubv occured')
-                            : 'Message has been sent';
-
-                        showDialog(
-                            context: context,
-                            builder: (_) => AlertDialog(
-                                  title: Text(title),
-                                  content: Text(text),
-                                  actions: <Widget>[
-                                    FlatButton(
-                                        onPressed: () {
-                                          Navigator.of(
-                                                  context)
-                                              .pushAndRemoveUntil(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Chats(
-                                                              source: widget
-                                                                  .source)),
-                                                  (Route<dynamic> route) =>
-                                                      false);
-                                        },
-                                        child: Text('OK'))
-                                  ],
-                                )).then((data) {
-                          if (result.data) {
-                            Navigator.of(context).pop();
-                          }
-                        });
-                      } else if (myController.text == "") {
-                        Fluttertoast.showToast(
-                            msg: "Message is empty",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            timeInSecForIosWeb: 2,
-                            backgroundColor: Colors.grey[800],
-                            textColor: Colors.white,
-                            fontSize: 14.0);
-                      }
-                    },
+                RaisedButton(
+                  child: Text(
+                    "Send",
+                    style: TextStyle(color: Colors.black, fontSize: 18),
                   ),
+                  color: Theme.of(context).primaryColor,
+                  onPressed: () async {
+                    if (myController.text != "") {
+                      final notes = ChatInsert(
+                          chatMessage: myController.text,
+                          chatTitle: widget.source);
+
+                      final result = await chatService.createChat(notes);
+
+                      final title = 'Done';
+                      final text = result.error
+                          ? (result.errorMessage ??
+                              'An error has hfwubv occured')
+                          : 'Message has been sent';
+
+                      showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                                title: Text(title),
+                                content: Text(text),
+                                actions: <Widget>[
+                                  FlatButton(
+                                      onPressed: () {
+                                        Navigator.of(
+                                                context)
+                                            .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder: (context) => Chats(
+                                                        source: widget.source)),
+                                                (Route<dynamic> route) =>
+                                                    false);
+                                      },
+                                      child: Text('OK'))
+                                ],
+                              )).then((data) {
+                        if (result.data) {
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    } else if (myController.text == "") {
+                      Fluttertoast.showToast(
+                          msg: "Message is empty",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 2,
+                          backgroundColor: Colors.grey[800],
+                          textColor: Colors.white,
+                          fontSize: 14.0);
+                    }
+                  },
                 ),
               ],
             ),

@@ -7,7 +7,7 @@ import '../listings/chatlisting.dart';
 class ChatService {
   static const API = 'https://acmcfi.herokuapp.com/v1/graphql';
   var headers = {
-    'x-hasura-admin-secret': '*****',
+    'x-hasura-admin-secret': '********',
     'content-type': 'application/json'
   };
 
