@@ -10,10 +10,6 @@ class ChatService {
     'x-hasura-admin-secret': '*****',
     'content-type': 'application/json'
   };
-  //  {
-  // 'content-type': 'application/json',
-  // 'x-hasura-admin-secret': 'santoshg@18'
-  // };
 
   Future<APIResponse<List<ChatListing>>> getChatList() {
     var data =
