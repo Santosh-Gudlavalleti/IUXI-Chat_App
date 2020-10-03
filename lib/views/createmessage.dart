@@ -65,8 +65,7 @@ class _CreateMessageState extends State<CreateMessage> {
 
                       final title = 'Done';
                       final text = result.error
-                          ? (result.errorMessage ??
-                              'An error has hfwubv occured')
+                          ? (result.errorMessage ?? 'An error has occured')
                           : 'Message has been sent';
 
                       showDialog(
@@ -93,14 +92,14 @@ class _CreateMessageState extends State<CreateMessage> {
                           Navigator.of(context).pop();
                         }
                       });
-                    } else if (myController.text == "") {
+                    } else {
                       Fluttertoast.showToast(
-                          msg: "Message is empty",
+                          msg: "No Message",
                           toastLength: Toast.LENGTH_SHORT,
                           gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 2,
                           backgroundColor: Colors.grey[800],
-                          textColor: Colors.white,
+                          textColor: Colors.lightBlue,
                           fontSize: 14.0);
                     }
                   },
