@@ -2,7 +2,7 @@
 
 An app that can be used to send/receive text messages. All the messages are stored in server, hence not burdeining the app size. The messages are retrieved and processed from the server using API calls etc and are displayed, after signing in.
 
-The app has been inspired from WhatsApp and built as a backup messenger app fotr my group of close friends, after WhatsApp crashed. The app has been named after the same Group ;)
+The app has been inspired from WhatsApp and built as a backup messenger app for my group of close friends, after WhatsApp crashed. The app has been named after the same Group ;)
 
 By Santosh Gudlavalleti
 
